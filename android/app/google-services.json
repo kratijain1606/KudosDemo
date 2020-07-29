@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "225391374792",
+    "firebase_url": "https://loginproj-47501.firebaseio.com",
+    "project_id": "loginproj-47501",
+    "storage_bucket": "loginproj-47501.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225391374792:android:1a1aee0aabf0cf93cdd0fd",
+        "android_client_info": {
+          "package_name": "com.example.kudos_ware"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225391374792-hvecgdo4086askhhdh6gli635k9cfutu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ105JiMaPZcaVX8L-6UrjuCxmnvHAnsg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225391374792-hvecgdo4086askhhdh6gli635k9cfutu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
