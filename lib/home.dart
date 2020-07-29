@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kudos_ware/advertiser.dart';
 import 'package:kudos_ware/pages/root_page.dart';
 import 'package:kudos_ware/services/authentication.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -35,41 +36,50 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 80.0,
               height: 80.0,
             ),
-            new RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                padding: EdgeInsets.all(12),
-                color: Colors.blue,
-                child: Text("INFLUENCER",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30.0,
-                        fontFamily: 'RobotoMono')),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RootPage(auth: new Auth())));
-                }),
+            Center(
+              child: new RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  padding: EdgeInsets.all(12),
+                  color: Colors.blue,
+                  child: Text("INFLUENCER",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30.0,
+                          fontFamily: 'RobotoMono')),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RootPage(auth: new Auth())));
+                  }),
+            ),
             SizedBox(
               width: 80.0,
               height: 80.0,
             ),
-            new RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                padding: EdgeInsets.all(12),
-                color: Colors.green,
-                child: Text("ADVERTISER",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30.0,
-                        fontFamily: 'Dancing Script')),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AdvertiserPage()));
-                  // LoginPage();
-                }),
+            Center(
+              child: new RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  // padding: EdgeInsets.fromLTRB(20, 12, 12, 12),
+                  padding: EdgeInsets.all(12),
+                  color: Colors.green,
+                  child: Text("ADVERTISER",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30.0,
+                          fontFamily: 'RobotoMono')),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AdvertiserPage()));
+                    // LoginPage();
+                  }),
+            ),
           ],
         ),
       ),

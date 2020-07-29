@@ -27,175 +27,181 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
           iconTheme: IconThemeData(color: Colors.blue),
           // centerTitle: true,
         ),
-        body: ListView(scrollDirection: Axis.vertical, children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Container(
-              height: 300,
-              child: Material(
-                  color: Color(0xFF34495c),
-                  elevation: 14.0,
-                  borderRadius: BorderRadius.circular(4),
-                  // shadowColor: Color(value),
-                  child: Column(
-                    children: <Widget>[
-                      Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 0)),
-                      Row(
+        body: ListView.builder(
+            itemCount: 6,
+            itemBuilder: (BuildContext context, int i) {
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  height: 300,
+                  child: Material(
+                      color: Color(0xFF34495c),
+                      elevation: 14.0,
+                      borderRadius: BorderRadius.circular(4),
+                      // shadowColor: Color(value),
+                      child: Column(
                         children: <Widget>[
-                          Padding(padding: EdgeInsets.fromLTRB(10, 10, 0, 0)),
-                          Column(
+                          Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 0)),
+                          Row(
                             children: <Widget>[
-                              CircleAvatar(
-                                backgroundColor: Colors.grey,
-                                radius: 50,
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Text(
-                                "FoodBlogger",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
-                          ),
-                          Padding(padding: EdgeInsets.fromLTRB(30, 20, 0, 0)),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                "Influencer Needed",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Row(
+                              Padding(
+                                  padding: EdgeInsets.fromLTRB(10, 10, 0, 0)),
+                              Column(
                                 children: <Widget>[
-                                  Icon(
-                                    Icons.photo,
-                                    color: Colors.white,
-                                    size: 30,
+                                  CircleAvatar(
+                                    backgroundColor: Colors.grey,
+                                    radius: 50,
+                                    backgroundImage: AssetImage('download.png'),
                                   ),
-                                  Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(15, 0, 0, 0)),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
                                   Text(
-                                    "30",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 30),
-                                  ),
-                                  Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(40, 30, 0, 0)),
-                                  Icon(
-                                    Icons.person,
-                                    color: Colors.white,
-                                    size: 30,
-                                  ),
-                                  Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(15, 0, 0, 0)),
-                                  Text(
-                                    "30",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 30),
+                                    "FoodBlogger",
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                 ],
                               ),
                               Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
-                              Row(
+                                  padding: EdgeInsets.fromLTRB(30, 20, 0, 0)),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Icon(
-                                    Icons.message,
-                                    color: Colors.white,
-                                    size: 30,
-                                  ),
-                                  Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(15, 0, 0, 0)),
                                   Text(
-                                    "30",
+                                    "Influencer Needed",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 30),
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.photo,
+                                        color: Colors.white,
+                                        size: 30,
+                                      ),
+                                      Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(15, 0, 0, 0)),
+                                      Text(
+                                        "30",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 30),
+                                      ),
+                                      Padding(
+                                          padding: EdgeInsets.fromLTRB(
+                                              40, 30, 0, 0)),
+                                      Icon(
+                                        Icons.person,
+                                        color: Colors.white,
+                                        size: 30,
+                                      ),
+                                      Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(15, 0, 0, 0)),
+                                      Text(
+                                        "30",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 30),
+                                      ),
+                                    ],
                                   ),
                                   Padding(
                                       padding:
-                                          EdgeInsets.fromLTRB(40, 30, 0, 0)),
-                                  Icon(
-                                    Icons.favorite,
-                                    color: Colors.white,
-                                    size: 30,
+                                          EdgeInsets.fromLTRB(0, 20, 0, 0)),
+                                  Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.message,
+                                        color: Colors.white,
+                                        size: 30,
+                                      ),
+                                      Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(15, 0, 0, 0)),
+                                      Text(
+                                        "30",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 30),
+                                      ),
+                                      Padding(
+                                          padding: EdgeInsets.fromLTRB(
+                                              40, 30, 0, 0)),
+                                      Icon(
+                                        Icons.favorite,
+                                        color: Colors.white,
+                                        size: 30,
+                                      ),
+                                      Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(15, 0, 0, 0)),
+                                      Text(
+                                        "30",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 30),
+                                      ),
+                                    ],
                                   ),
+                                ],
+                              )
+                            ],
+                          ),
+                          Padding(padding: EdgeInsets.fromLTRB(10, 10, 0, 10)),
+                          Text(
+                            "I want a model a foodie for my vegan restaurant",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(20),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Column(
+                                children: <Widget>[
                                   Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(15, 0, 0, 0)),
+                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
                                   Text(
-                                    "30",
+                                    "Total Bid:",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 30),
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  Text(
+                                    "20",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 0.2 * MediaQuery.of(context).size.width,
+                              ),
+                              Column(
+                                children: <Widget>[
+                                  Padding(
+                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
+                                  Text(
+                                    "Average Bid:",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  Text(
+                                    "20",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
                                   ),
                                 ],
                               ),
                             ],
                           )
                         ],
-                      ),
-                      Padding(padding: EdgeInsets.fromLTRB(10, 10, 0, 10)),
-                      Text(
-                        "Some text here",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(20),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
-                              Text(
-                                "Total Bid:",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                              Text(
-                                "20",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 0.2 * MediaQuery.of(context).size.width,
-                          ),
-                          Column(
-                            children: <Widget>[
-                              Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
-                              Text(
-                                "Average Bid:",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                              Text(
-                                "20",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )
-                    ],
-                  )),
-            ),
-          ),
-        ]),
+                      )),
+                ),
+              );
+            }),
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
@@ -215,7 +221,6 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
                 title: Text("profile"),
                 backgroundColor: Colors.black)
           ],
-        )
-        );
+        ));
   }
 }

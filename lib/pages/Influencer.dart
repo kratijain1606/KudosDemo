@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kudos_ware/home.dart';
+import 'package:kudos_ware/login.dart';
+import 'package:kudos_ware/advertiser.dart';
+import 'package:kudos_ware/services/authentication.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,6 +10,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedPage = 0;
+  final Auth _auth = Auth();
+  final _pageOptions = [HomeScreen(), LoginPage(), AdvertiserPage()];
   @override
   void initState() {
     super.initState();
@@ -36,10 +43,21 @@ class _HomePageState extends State<HomePage> {
               color: Color(0x34495c),
               onPressed: null),
           actions: <Widget>[
+            Column(
+              children: <Widget>[
+                SizedBox(height: 20),
+                Text(
+                  "SignOut",
+                  style: (TextStyle(color: Colors.black)),
+                ),
+              ],
+            ),
             IconButton(
-                icon: Icon(Icons.image, color: Colors.black),
+                icon: Icon(Icons.backup, color: Colors.black),
                 color: Colors.black,
-                onPressed: null)
+                onPressed: () async {
+                  await _auth.signOut();
+                }),
           ],
           iconTheme: IconThemeData(color: Colors.blue),
           // centerTitle: true,
@@ -62,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                         children: <Widget>[
                           Padding(padding: EdgeInsets.all(10)),
                           CircleAvatar(
-                            backgroundColor: Colors.grey,
+                            backgroundImage: AssetImage('download.png'),
                             radius: 40,
                           ),
                           SizedBox(
@@ -141,6 +159,7 @@ class _HomePageState extends State<HomePage> {
           },
         ),
         bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedPage,
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
@@ -159,6 +178,11 @@ class _HomePageState extends State<HomePage> {
                 title: Text("profile"),
                 backgroundColor: Colors.black)
           ],
+          onTap: (index) {
+            setState(() {
+              _selectedPage = index;
+            });
+          },
         ));
   }
 }

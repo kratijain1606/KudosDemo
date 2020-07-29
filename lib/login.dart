@@ -122,7 +122,8 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           child: Text('Sign Up'),
                         ),
-                      )
+                      ),
+                      Text("Forgot Password")
                     ],
                   ),
                 ))
