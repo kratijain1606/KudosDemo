@@ -1,16 +1,37 @@
 # kudos_ware
 
-A new Flutter project.
+A Flutter project.
 
-## Getting Started
+APK for file ----------->  [Here](https://drive.google.com/file/d/14iQPJLm8kLU1xmjJKIWRv4NzNx1WACEU/view?usp=sharing)
 
-This project is a starting point for a Flutter application.
+### Adgram 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Showcase](https://imgur.com/pxy41qy.png)
+
+
+### Prerequisites
+
+What things you need to install the software :
+* Get an OS
+* Install flutter
+* Android Studio / VSCode or any ide
+
+
+### Running
+
+Run this in terminal
+```
+flutter pub get
+```
+connect to a device with USB debugging on or use Android emulator
+```
+flutter run
+```
+
+### Tech Stack
+
+* Flutter
+* Firebase
+
