@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
-import 'Profile.dart';
-import 'package:provider/provider.dart';
-import 'authorization.dart';
-
-class HomePage extends StatefulWidget {
+import 'package:kudos_ware/advertiser.dart';
+import 'package:kudos_ware/pages/root_page.dart';
+import 'package:kudos_ware/services/authentication.dart';
+class HomeScreen extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return
@@ -50,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                         fontFamily: 'RobotoMono')),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ProfilePage()));
+                      MaterialPageRoute(builder: (context) => RootPage(auth: new Auth())));
                 }),
             SizedBox(
               width: 80.0,
@@ -69,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                         fontFamily: 'Dancing Script')),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginPage()));
+                      MaterialPageRoute(builder: (context) => AdvertiserPage()));
                   // LoginPage();
                 }),
           ],

@@ -17,15 +17,7 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
                   fontFamily: 'Dancing Script',
                   fontWeight: FontWeight.w700)),
           backgroundColor: Colors.white70,
-
           elevation: 0.0,
-          leading: IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: Colors.black,
-              ),
-              color: Colors.black,
-              onPressed: null),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.image, color: Colors.black),
@@ -41,25 +33,24 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
             child: Container(
               height: 300,
               child: Material(
-                  color: Colors.black,
+                  color: Color(0xFF34495c),
                   elevation: 14.0,
                   borderRadius: BorderRadius.circular(4),
                   // shadowColor: Color(value),
-
                   child: Column(
                     children: <Widget>[
-                      Text(
-                        "Influencer Needed",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      Padding(padding: EdgeInsets.fromLTRB(30, 10, 0, 0)),
+                      Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 0)),
                       Row(
                         children: <Widget>[
+                          Padding(padding: EdgeInsets.fromLTRB(10, 10, 0, 0)),
                           Column(
                             children: <Widget>[
                               CircleAvatar(
                                 backgroundColor: Colors.grey,
                                 radius: 50,
+                              ),
+                              SizedBox(
+                                height: 20,
                               ),
                               Text(
                                 "FoodBlogger",
@@ -67,17 +58,24 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
                               ),
                             ],
                           ),
-
                           Padding(padding: EdgeInsets.fromLTRB(30, 20, 0, 0)),
-                          // Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
+                              Text(
+                                "Influencer Needed",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
                               Row(
                                 children: <Widget>[
                                   Icon(
                                     Icons.photo,
                                     color: Colors.white,
-                                    size: 40,
+                                    size: 30,
                                   ),
                                   Padding(
                                       padding:
@@ -93,7 +91,7 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
                                   Icon(
                                     Icons.person,
                                     color: Colors.white,
-                                    size: 40,
+                                    size: 30,
                                   ),
                                   Padding(
                                       padding:
@@ -112,7 +110,7 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
                                   Icon(
                                     Icons.message,
                                     color: Colors.white,
-                                    size: 40,
+                                    size: 30,
                                   ),
                                   Padding(
                                       padding:
@@ -128,7 +126,7 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
                                   Icon(
                                     Icons.favorite,
                                     color: Colors.white,
-                                    size: 40,
+                                    size: 30,
                                   ),
                                   Padding(
                                       padding:
@@ -146,18 +144,20 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
                       ),
                       Padding(padding: EdgeInsets.fromLTRB(10, 10, 0, 10)),
                       Text(
-                        "Don't forget to add asset for your mobile app logo in the pubspec.yaml like this, and add your image named logo.png inside assets directory.",
+                        "Some text here",
                         style: TextStyle(color: Colors.white),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(20),
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Column(
                             children: <Widget>[
                               Padding(
-                                  padding: EdgeInsets.fromLTRB(100, 0, 0, 0)),
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
                               Text(
                                 "Total Bid:",
                                 style: TextStyle(
@@ -170,10 +170,13 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
                               ),
                             ],
                           ),
+                          SizedBox(
+                            width: 0.2 * MediaQuery.of(context).size.width,
+                          ),
                           Column(
                             children: <Widget>[
                               Padding(
-                                  padding: EdgeInsets.fromLTRB(270, 0, 0, 0)),
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
                               Text(
                                 "Average Bid:",
                                 style: TextStyle(
@@ -192,6 +195,27 @@ class _AdvertiserPageState extends State<AdvertiserPage> {
                   )),
             ),
           ),
-        ]));
+        ]),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                title: Text("Home"),
+                backgroundColor: Colors.black),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.check_box),
+                title: Text("Checkbox"),
+                backgroundColor: Colors.black),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.message),
+                title: Text("msg"),
+                backgroundColor: Colors.black),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                title: Text("profile"),
+                backgroundColor: Colors.black)
+          ],
+        )
+        );
   }
 }
