@@ -35,3 +35,10 @@ flutter run
 * Flutter
 * Firebase
 
+### Steps to follow after downloading apk.
+* Influencer
+     * Sign up if you have not registered yet
+     * Now, sign in with your id
+     * After sign in you will be redirected to Influencer profile page
+* Advertiser
+     * Click on advertiser. Advertiser page will be displayed
