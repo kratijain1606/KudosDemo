@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kudos_ware/home.dart';
-import 'package:kudos_ware/login.dart';
+// import 'package:kudos_ware/login.dart';
 import 'package:kudos_ware/advertiser.dart';
 import 'package:kudos_ware/services/authentication.dart';
 
@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedPage = 0;
   final Auth _auth = Auth();
-  final _pageOptions = [HomeScreen(), LoginPage(), AdvertiserPage()];
+  // final _pageOptions = [HomeScreen(), LoginPage(), AdvertiserPage()];
   @override
   void initState() {
     super.initState();

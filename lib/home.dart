@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kudos_ware/advertiser.dart';
+// import 'package:kudos_ware/login.dart';
+import 'pages/Influencer/login.dart';
 import 'package:kudos_ware/pages/root_page.dart';
 import 'package:kudos_ware/services/authentication.dart';
 
@@ -73,10 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontSize: 30.0,
                           fontFamily: 'RobotoMono')),
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AdvertiserPage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Login()));
                     // LoginPage();
                   }),
             ),

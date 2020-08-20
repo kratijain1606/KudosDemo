@@ -13,6 +13,14 @@ abstract class BaseAuth {
   Future<void> signOut();
 
   Future<bool> isEmailVerified();
+
+  Future<void> changeEmail(String email);
+
+  Future<void> changePassword(String password);
+
+  Future<void> deleteUser();
+
+  Future<void> sendPasswordResetMail(String email);
 }
 
 class Auth implements BaseAuth {
@@ -25,11 +33,35 @@ class Auth implements BaseAuth {
     return user.uid;
   }
 
+  Future<void> changeEmail(String email) async {
+    FirebaseUser user = await _firebaseAuth.currentUser();
+    user.updateEmail(email).then((_) {
+      print("Succesfull changed email");
+    }).catchError((error) {
+      print("email can't be changed" + error.toString());
+    });
+    return null;
+  }
+
   Future<String> signUp(String email, String password) async {
     AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
     FirebaseUser user = result.user;
     return user.uid;
+  }
+
+  Future<void> changePassword(String password) async {
+    FirebaseUser user = await _firebaseAuth.currentUser();
+    user.updatePassword(password).then((_) {
+      print("Succesfull changed password");
+    }).catchError((error) {
+      print("Password can't be changed" + error.toString());
+    });
+    return null;
+  }
+
+  Future<void> sendPasswordResetMail(String email) async {
+    print("Called");
   }
 
   Future<FirebaseUser> getCurrentUser() async {
@@ -39,6 +71,16 @@ class Auth implements BaseAuth {
 
   Future<void> signOut() async {
     return _firebaseAuth.signOut();
+  }
+
+  Future<void> deleteUser() async {
+    FirebaseUser user = await _firebaseAuth.currentUser();
+    user.delete().then((_) {
+      print("Succesfull user deleted");
+    }).catchError((error) {
+      print("user can't be delete" + error.toString());
+    });
+    return null;
   }
 
   Future<void> sendEmailVerification() async {

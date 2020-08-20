@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kudos_ware/home.dart';
-import 'package:kudos_ware/login.dart';
+// import 'package:kudos_ware/login.dart';
 import 'package:kudos_ware/advertiser.dart';
 
 class Bottom extends StatefulWidget {
@@ -11,11 +11,11 @@ class Bottom extends StatefulWidget {
 class _BottomState extends State<Bottom> {
   @override
   int _selectedPage = 0;
-  final _pageOptions = [HomeScreen(), LoginPage(), AdvertiserPage()];
+  // final _pageOptions = [HomeScreen(), , AdvertiserPage()];
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pageOptions[_selectedPage],
-    );
+        // body: _pageOptions[_selectedPage],
+        );
 
     BottomNavigationBar(
       currentIndex: _selectedPage,

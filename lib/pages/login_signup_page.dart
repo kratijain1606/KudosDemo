@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kudos_ware/services/authentication.dart';
+import 'Advertiser/ForgotPass.dart';
 
 class LoginSignupPage extends StatefulWidget {
   LoginSignupPage({this.auth, this.loginCallback});
@@ -45,8 +46,8 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
           print('Signed in: $userId');
         } else {
           userId = await widget.auth.signUp(_email, _password);
-          //widget.auth.sendEmailVerification();
-          //_showVerifyEmailSentDialog();
+          widget.auth.sendEmailVerification();
+          _showVerifyEmailSentDialog();
           print('Signed up user: $userId');
         }
         setState(() {
@@ -65,6 +66,29 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
         });
       }
     }
+  }
+
+  void _showVerifyEmailSentDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Verify your account"),
+          content:
+              new Text("Link to verify account has been sent to your email"),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("Dismiss"),
+              onPressed: () {
+                // _changeFormToLogin();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -111,18 +135,23 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
   Widget _showForm() {
     return new Container(
         padding: EdgeInsets.all(16.0),
-        child: new Form(
-          key: _formKey,
-          child: new ListView(
-            shrinkWrap: true,
-            children: <Widget>[
-              showLogo(),
-              showEmailInput(),
-              showPasswordInput(),
-              showPrimaryButton(),
-              _isLoginForm ? signUp() : showSecondaryButton(),
-              showErrorMessage(),
-            ],
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: new Form(
+            key: _formKey,
+            child: new ListView(
+              shrinkWrap: true,
+              children: <Widget>[
+                showLogo(),
+                showEmailInput(),
+                showPasswordInput(),
+                showPrimaryButton(),
+                _isLoginForm ? signUp() : showSecondaryButton(),
+                showErrorMessage(),
+              ],
+            ),
           ),
         ));
   }
@@ -163,18 +192,20 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
 
   Widget showEmailInput() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
-      child: new TextFormField(
-          decoration: InputDecoration(
-              border: OutlineInputBorder(), hintText: 'Enter Email here'),
-          keyboardType: TextInputType.emailAddress,
-          validator: (value) {
-            if (value.isEmpty || !value.contains('@')) {
-              return 'invalid email';
-            }
-            return null;
-          },
-          onSaved: (value) => _email = value.trim()),
+      padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
+      child: GestureDetector(
+        child: new TextFormField(
+            decoration: InputDecoration(
+                border: OutlineInputBorder(), hintText: 'Enter Email here'),
+            keyboardType: TextInputType.emailAddress,
+            validator: (value) {
+              if (value.isEmpty || !value.contains('@')) {
+                return 'invalid email';
+              }
+              return null;
+            },
+            onSaved: (value) => _email = value.trim()),
+      ),
     );
   }
 
@@ -206,35 +237,55 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
 
   Widget showPrimaryButton() {
     return new Padding(
-        padding: EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 0.0),
-        child: SizedBox(
-          height: 40.0,
-          child: new RaisedButton(
-            elevation: 5.0,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(5.0)),
-            color: Colors.blue,
-            child: new Text(_isLoginForm ? 'Login' : 'Create account',
-                style: new TextStyle(fontSize: 20.0, color: Colors.white)),
-            onPressed: validateAndSubmit,
-          ),
+        padding: EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 0.0),
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 40.0,
+              child: new RaisedButton(
+                elevation: 5.0,
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(5.0)),
+                color: Colors.blue,
+                child: new Text(_isLoginForm ? 'Login' : 'Create account',
+                    style: new TextStyle(fontSize: 20.0, color: Colors.white)),
+                onPressed: validateAndSubmit,
+              ),
+            ),
+          ],
         ));
   }
 
   Widget signUp() {
     return new Padding(
         padding: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
-        child: SizedBox(
-          height: 42,
-          child: RaisedButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
+        child: Column(children: <Widget>[
+          SizedBox(
+            height: 42,
+            child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                padding: EdgeInsets.all(0),
+                color: Colors.white60,
+                child: new Text('Sign up ',
+                    style: new TextStyle(fontSize: 20.0, color: Colors.black)),
+                onPressed: toggleFormMode),
+          ),
+          Padding(padding: EdgeInsets.all(10)),
+          InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ForgotPass()));
+            },
+            child: new Padding(
+              padding: new EdgeInsets.all(10.0),
+              child: new Text(
+                "Forgot Password?",
+                textAlign: TextAlign.center,
               ),
-              padding: EdgeInsets.all(0),
-              color: Colors.white60,
-              child: new Text('Sign up',
-                style: new TextStyle(fontSize: 20.0, color: Colors.black)),
-              onPressed: toggleFormMode),
-        ));
+            ),
+          )
+        ]));
   }
 }
