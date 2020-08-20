@@ -21,6 +21,8 @@ abstract class BaseAuth {
   Future<void> deleteUser();
 
   Future<void> sendPasswordResetMail(String email);
+
+  Future<void> resetPassword(String email);
 }
 
 class Auth implements BaseAuth {
@@ -62,6 +64,10 @@ class Auth implements BaseAuth {
 
   Future<void> sendPasswordResetMail(String email) async {
     print("Called");
+  }
+
+  Future<void> resetPassword(String email) async {
+    await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
   Future<FirebaseUser> getCurrentUser() async {
