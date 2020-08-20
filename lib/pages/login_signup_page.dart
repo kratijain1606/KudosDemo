@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kudos_ware/services/authentication.dart';
-import 'Advertiser/ForgotPass.dart';
+import 'package:kudos_ware/pages/Influencer/ForgotPass.dart';
 
 class LoginSignupPage extends StatefulWidget {
   LoginSignupPage({this.auth, this.loginCallback});
@@ -23,7 +23,7 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
   bool _isLoading;
 
   // Check if form is valid before perform login or signup
-  bool validateAndSave() {
+  validateAndSave() {
     final form = _formKey.currentState;
     if (form.validate()) {
       form.save();
