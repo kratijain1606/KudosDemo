@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kudos_ware/home.dart';
+import 'package:intl/intl.dart';
 // import 'package:kudos_ware/login.dart';
 import 'package:kudos_ware/advertiser.dart';
+import 'package:kudos_ware/pages/Advertisers/filter.dart';
 import 'package:kudos_ware/services/authentication.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,6 +20,13 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  var pictures = new NumberFormat.compact().format(1234);
+
+  var followers = new NumberFormat.compact().format(103424320);
+
+  var comments = new NumberFormat.compact().format(123);
+
+  var likes = new NumberFormat.compact().format(1034223450);
   @override
   void dispose() {
     super.dispose();
@@ -26,163 +35,123 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Adagram',
-              style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 30.0,
-                  fontFamily: 'Dancing Script',
-                  fontWeight: FontWeight.w700)),
-          backgroundColor: Colors.white70,
-          elevation: 0.0,
-          leading: IconButton(
-              icon: Icon(
-                Icons.tune,
-                color: Colors.black,
-              ),
-              color: Color(0x34495c),
-              onPressed: null),
-          actions: <Widget>[
-            Column(
-              children: <Widget>[
-                SizedBox(height: 20),
-                Text(
-                  "SignOut",
-                  style: (TextStyle(color: Colors.black)),
-                ),
-              ],
-            ),
-            IconButton(
-                icon: Icon(Icons.backup, color: Colors.black),
-                color: Colors.black,
-                onPressed: () async {
-                  await _auth.signOut();
-                }),
-          ],
-          iconTheme: IconThemeData(color: Colors.blue),
-          // centerTitle: true,
-        ),
-        body: ListView.builder(
-          itemCount: 5,
+      body: Container(
+        child: ListView.builder(
+          itemCount: 500,
           itemBuilder: (BuildContext context, int i) {
             return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Container(
-                height: 150,
-                child: Material(
-                  color: Color(0xFF34495c),
-                  elevation: 14.0,
-                  borderRadius: BorderRadius.circular(4),
-                  child: Row(
-                    children: <Widget>[
-                      Padding(padding: EdgeInsets.all(10)),
-                      Column(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.all(10)),
-                          CircleAvatar(
-                            backgroundImage: AssetImage('download.png'),
-                            radius: 40,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "FoodBlogger",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                      Padding(padding: EdgeInsets.fromLTRB(30, 0, 0, 0)),
-                      Column(children: <Widget>[
-                        Padding(padding: EdgeInsets.fromLTRB(0, 30, 0, 0)),
-                        Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.photo,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                            Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0)),
-                            Text(
-                              "30",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 30),
-                            ),
-                            Padding(padding: EdgeInsets.fromLTRB(40, 30, 0, 0)),
-                            Icon(
-                              Icons.person,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                            Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0)),
-                            Text(
-                              "30",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 30),
-                            ),
-                          ],
+              padding: const EdgeInsets.all(0),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(color: Colors.white),
+                  height: 150,
+                  child: Material(
+                    color: Colors.white,
+                    elevation: 14.0,
+                    borderRadius: BorderRadius.circular(4),
+                    child: Row(
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.all(10)),
+                        Column(
+                          children: <Widget>[DisplayPicture()],
                         ),
-                        Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
-                        Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.message,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                            Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0)),
-                            Text(
-                              "30",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 30),
-                            ),
-                            Padding(padding: EdgeInsets.fromLTRB(40, 30, 0, 0)),
-                            Icon(
-                              Icons.favorite,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                            Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0)),
-                            Text(
-                              "30",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 30),
-                            ),
-                          ],
-                        ),
-                      ])
-                    ],
+                        Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0)),
+                        Column(children: <Widget>[
+                          Padding(padding: EdgeInsets.fromLTRB(0, 30, 0, 0)),
+                          FirstRow(pictures, followers),
+                          Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
+                          SecondRow(comments, likes)
+                          //  SecondRow(),
+                        ])
+                      ],
+                    ),
                   ),
                 ),
               ),
             );
           },
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedPage,
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text("Home"),
-                backgroundColor: Colors.black),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.check_box),
-                title: Text("Checkbox"),
-                backgroundColor: Colors.black),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.message),
-                title: Text("msg"),
-                backgroundColor: Colors.black),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                title: Text("profile"),
-                backgroundColor: Colors.black)
-          ],
-          onTap: (index) {
-            setState(() {
-              _selectedPage = index;
-            });
-          },
-        ));
+      ),
+    );
   }
+}
+
+Widget DisplayPicture() {
+  return Column(children: <Widget>[
+    Padding(padding: EdgeInsets.all(10)),
+    CircleAvatar(
+      backgroundImage: AssetImage('download.png'),
+      radius: 40,
+    ),
+    SizedBox(
+      height: 10,
+    ),
+    Text(
+      "FoodBlogger",
+      style: TextStyle(color: Color(0xFF34495c)),
+    ),
+  ]);
+}
+
+Widget FirstRow(var a, var b) {
+  return Row(
+    children: <Widget>[
+      Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+      ),
+      Icon(
+        Icons.photo,
+        color: Color(0xFF34495c),
+        size: 30,
+      ),
+      Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
+      Text(
+        a,
+        style: TextStyle(color: Color(0xFF34495c), fontSize: 30),
+      ),
+      Padding(padding: EdgeInsets.fromLTRB(40, 30, 0, 0)),
+      Icon(
+        Icons.person,
+        color: Color(0xFF34495c),
+        size: 30,
+      ),
+      Padding(padding: EdgeInsets.fromLTRB(10, 0, 3, 0)),
+      Text(
+        b,
+        style: TextStyle(color: Color(0xFF34495c), fontSize: 30),
+      ),
+    ],
+  );
+}
+
+Widget SecondRow(var comments, var likes) {
+  return Row(
+    children: <Widget>[
+      Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+      ),
+      Icon(
+        Icons.message,
+        color: Color(0xFF34495c),
+        size: 30,
+      ),
+      Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0)),
+      Text(
+        comments,
+        style: TextStyle(color: Color(0xFF34495c), fontSize: 30),
+      ),
+      Padding(padding: EdgeInsets.fromLTRB(40, 30, 0, 0)),
+      Icon(
+        Icons.favorite,
+        color: Color(0xFF34495c),
+        size: 30,
+      ),
+      Padding(padding: EdgeInsets.fromLTRB(10, 0, 3, 0)),
+      Text(
+        likes,
+        style: TextStyle(color: Color(0xFF34495c), fontSize: 30),
+      ),
+    ],
+  );
 }

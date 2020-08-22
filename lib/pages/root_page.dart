@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kudos_ware/pages/login_signup_page.dart';
 import 'package:kudos_ware/services/authentication.dart';
 import 'package:kudos_ware/pages/Influencer.dart';
+import 'Influencer_main.dart';
 
 enum AuthStatus {
   NOT_DETERMINED,
@@ -77,7 +78,7 @@ class _RootPageState extends State<RootPage> {
         break;
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
-          return new HomePage();
+          return new InfluencerMain();
         } else
           return buildWaitingScreen();
         break;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kudos_ware/services/authentication.dart';
-import 'package:kudos_ware/pages/Influencer/ForgotPass.dart';
+import 'package:kudos_ware/pages/Advertisers/ForgotPass.dart';
 
 class LoginSignupPage extends StatefulWidget {
   LoginSignupPage({this.auth, this.loginCallback});
@@ -114,11 +114,13 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        body: Stack(
-      children: <Widget>[
-        _showForm(),
-        _showCircularProgress(),
-      ],
+        body: Container(
+      child: Stack(
+        children: <Widget>[
+          _showForm(),
+          _showCircularProgress(),
+        ],
+      ),
     ));
   }
 
@@ -142,6 +144,7 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
           child: new Form(
             key: _formKey,
             child: new ListView(
+              // reverse: true,
               shrinkWrap: true,
               children: <Widget>[
                 showLogo(),
@@ -192,7 +195,7 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
 
   Widget showEmailInput() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 0.0),
       child: GestureDetector(
         child: new TextFormField(
             decoration: InputDecoration(
@@ -211,7 +214,7 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
 
   Widget showPasswordInput() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0.0),
       child: new TextFormField(
         decoration: InputDecoration(
             border: OutlineInputBorder(), hintText: 'Enter Password here'),
