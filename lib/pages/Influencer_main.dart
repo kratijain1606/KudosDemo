@@ -43,47 +43,57 @@ class _InfluencerMainState extends State<InfluencerMain> {
       filter(),
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Adagram',
-            style: TextStyle(
-                color: Colors.blue,
-                fontSize: 30.0,
-                fontFamily: 'Dancing Script',
-                fontWeight: FontWeight.w700)),
-        backgroundColor: Colors.black,
-        elevation: 0.0,
-        leading: IconButton(
-            icon: Icon(
-              Icons.tune,
-              color: Colors.white70,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          title: Center(
+            child: Container(
+              // padding: EdgeInsets.all(50),
+              child: Text('Adagram',
+                  style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 40.0,
+                      fontFamily: 'Dancing Script',
+                      fontWeight: FontWeight.w700)),
             ),
-            color: Color(0x34495c),
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => filter()));
-            }),
-        actions: <Widget>[
-          Column(
-            children: <Widget>[
-              SizedBox(height: 20),
-              Text(
-                "SignOut",
-                style: (TextStyle(color: Colors.white70)),
-              ),
-            ],
           ),
-          IconButton(
-              icon: Icon(Icons.backup, color: Colors.white70),
-              color: Colors.white70,
-              onPressed: () async {
-                await _auth.signOut();
+          backgroundColor: Color(0xFFe6e6e6),
 
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+          elevation: 10,
+          leading: IconButton(
+              icon: Icon(
+                Icons.tune,
+                color: Color(0xFF34495c),
+              ),
+              color: Color(0x34495c),
+              onPressed: () {
+                // Navigator.push(
+                //     context, MaterialPageRoute(builder: (context) => filter())
+                //     );
               }),
-        ],
-        iconTheme: IconThemeData(color: Colors.blue),
-        // centerTitle: true,
+          actions: <Widget>[
+            Column(
+              children: <Widget>[
+                SizedBox(height: 20),
+                Text(
+                  "SignOut",
+                  style: (TextStyle(color: Color(0xFF34495c))),
+                ),
+              ],
+            ),
+            IconButton(
+                icon: Icon(Icons.keyboard_backspace, color: Color(0xFF34495c)),
+                color: Color(0xFF34495c),
+                onPressed: () async {
+                  await _auth.signOut();
+
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                }),
+          ],
+          iconTheme: IconThemeData(color: Colors.blue),
+          // centerTitle: true,
+        ),
       ),
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

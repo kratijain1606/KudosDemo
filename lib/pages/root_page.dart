@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kudos_ware/pages/login_signup_page.dart';
 import 'package:kudos_ware/services/authentication.dart';
-import 'package:kudos_ware/pages/Influencer.dart';
 import 'Influencer_main.dart';
 
 enum AuthStatus {

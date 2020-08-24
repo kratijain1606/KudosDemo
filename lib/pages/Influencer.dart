@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kudos_ware/home.dart';
 import 'package:intl/intl.dart';
-// import 'package:kudos_ware/login.dart';
-import 'package:kudos_ware/advertiser.dart';
-import 'package:kudos_ware/pages/Advertisers/filter.dart';
-import 'package:kudos_ware/services/authentication.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,9 +7,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedPage = 0;
-  final Auth _auth = Auth();
-  // final _pageOptions = [HomeScreen(), LoginPage(), AdvertiserPage()];
   @override
   void initState() {
     super.initState();
@@ -40,32 +32,78 @@ class _HomePageState extends State<HomePage> {
           itemCount: 500,
           itemBuilder: (BuildContext context, int i) {
             return Padding(
-              padding: const EdgeInsets.all(0),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(color: Colors.white),
-                  height: 150,
-                  child: Material(
-                    color: Colors.white,
-                    elevation: 14.0,
-                    borderRadius: BorderRadius.circular(4),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.all(10)),
-                        Column(
-                          children: <Widget>[DisplayPicture()],
-                        ),
-                        Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0)),
-                        Column(children: <Widget>[
-                          Padding(padding: EdgeInsets.fromLTRB(0, 30, 0, 0)),
-                          FirstRow(pictures, followers),
-                          Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
-                          SecondRow(comments, likes)
-                          //  SecondRow(),
-                        ])
-                      ],
-                    ),
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(color: Colors.white),
+                height: MediaQuery.of(context).size.height * 0.23,
+                child: Material(
+                  color: Colors.white,
+                  elevation: 14.0,
+                  borderRadius: BorderRadius.circular(10),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.all(10)),
+                      Column(
+                        children: <Widget>[DisplayPicture()],
+                      ),
+                      Padding(padding: EdgeInsets.fromLTRB(15, 0, 5, 0)),
+                      Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.fromLTRB(0, 35, 0, 0),
+                            child: Icon(
+                              Icons.photo,
+                              color: Color(0xFF34495c),
+                              size: 27,
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.fromLTRB(5, 35, 0, 0)),
+                          Icon(
+                            Icons.message,
+                            color: Color(0xFF34495c),
+                            size: 27,
+                          ),
+                        ],
+                      ),
+                      Column(children: <Widget>[
+                        Padding(padding: EdgeInsets.fromLTRB(0, 30, 0, 0)),
+                        FirstRow(pictures),
+                        Padding(padding: EdgeInsets.fromLTRB(0, 30, 0, 0)),
+                        SecondRow(comments)
+                        //  SecondRow(),
+                      ]),
+                      Padding(
+                        padding: EdgeInsets.all(7),
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.fromLTRB(0, 35, 0, 0),
+                            child: Icon(
+                              Icons.person,
+                              color: Color(0xFF34495c),
+                              size: 27,
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.fromLTRB(0, 35, 0, 0)),
+                          Icon(
+                            Icons.favorite,
+                            color: Color(0xFF34495c),
+                            size: 27,
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                      ),
+                      Column(children: <Widget>[
+                        Padding(padding: EdgeInsets.fromLTRB(0, 30, 0, 0)),
+                        FirstRow(followers),
+                        Padding(padding: EdgeInsets.fromLTRB(0, 30, 0, 0)),
+                        SecondRow(likes)
+                        //  SecondRow(),
+                      ]),
+                    ],
                   ),
                 ),
               ),
@@ -94,64 +132,28 @@ Widget DisplayPicture() {
   ]);
 }
 
-Widget FirstRow(var a, var b) {
+Widget FirstRow(var a) {
   return Row(
     children: <Widget>[
-      Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-      ),
-      Icon(
-        Icons.photo,
-        color: Color(0xFF34495c),
-        size: 30,
-      ),
-      Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
+      // Padding(padding: EdgeInsets.fromLTRB(10, 0, 3, 0)),
       Text(
         a,
-        style: TextStyle(color: Color(0xFF34495c), fontSize: 30),
-      ),
-      Padding(padding: EdgeInsets.fromLTRB(40, 30, 0, 0)),
-      Icon(
-        Icons.person,
-        color: Color(0xFF34495c),
-        size: 30,
+        style: TextStyle(color: Color(0xFF34495c), fontSize: 27),
       ),
       Padding(padding: EdgeInsets.fromLTRB(10, 0, 3, 0)),
-      Text(
-        b,
-        style: TextStyle(color: Color(0xFF34495c), fontSize: 30),
-      ),
     ],
   );
 }
 
-Widget SecondRow(var comments, var likes) {
+Widget SecondRow(var comments) {
   return Row(
     children: <Widget>[
-      Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-      ),
-      Icon(
-        Icons.message,
-        color: Color(0xFF34495c),
-        size: 30,
-      ),
-      Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0)),
+      // Padding(padding: EdgeInsets.fromLTRB(10, 0, 3, 0)),
       Text(
         comments,
-        style: TextStyle(color: Color(0xFF34495c), fontSize: 30),
-      ),
-      Padding(padding: EdgeInsets.fromLTRB(40, 30, 0, 0)),
-      Icon(
-        Icons.favorite,
-        color: Color(0xFF34495c),
-        size: 30,
+        style: TextStyle(color: Color(0xFF34495c), fontSize: 27),
       ),
       Padding(padding: EdgeInsets.fromLTRB(10, 0, 3, 0)),
-      Text(
-        likes,
-        style: TextStyle(color: Color(0xFF34495c), fontSize: 30),
-      ),
     ],
   );
 }
