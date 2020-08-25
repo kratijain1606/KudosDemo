@@ -1,5 +1,8 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 
+// import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:kudos_ware/services/authentication.dart';
 import 'Chat.dart';
 
@@ -9,6 +12,15 @@ class filter extends StatefulWidget {
 }
 
 class _filterState extends State<filter> {
+  // SfRangeValues _values = SfRangeValues(40.0, 80.0);
+  RangeValues values1 = RangeValues(1, 10000000);
+  RangeLabels labels1 = RangeLabels('1', '10000000');
+  RangeValues values2 = RangeValues(1, 10000000);
+  RangeLabels labels2 = RangeLabels('1', '10000000');
+  RangeValues values3 = RangeValues(1, 10000000);
+  RangeLabels labels3 = RangeLabels('1', '10000000');
+  RangeValues values4 = RangeValues(1, 10000000);
+  RangeLabels labels4 = RangeLabels('1', '10000000');
   @override
   double _currentSliderValue = 20;
   Widget build(BuildContext context) {
@@ -24,19 +36,25 @@ class _filterState extends State<filter> {
               child: Row(
                 children: [
                   Text("Followers"),
-                  Slider(
-                    min: 0,
-                    max: 100,
-                    divisions: 5,
-                    value: _currentSliderValue,
-                    label: _currentSliderValue.round().toString(),
-                    onChanged: (value) {
-                      setState(() {
-                        _currentSliderValue:
-                        value;
-                      });
-                    },
-                  ),
+                  Row(
+                    children: [
+                      RangeSlider(
+                        min: 0.0,
+                        max: 10000000,
+                        values: values1,
+                        divisions: 100,
+                        labels: labels1,
+                        onChanged: (value) {
+                          print('START: ${value.start}, END:${value.end}');
+                          setState(() {
+                            values1 = value;
+                            labels1 = RangeLabels(
+                                value.start.toString(), value.end.toString());
+                          });
+                        },
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -45,19 +63,25 @@ class _filterState extends State<filter> {
               child: Row(
                 children: [
                   Text("Likes"),
-                  Slider(
-                    min: 0,
-                    max: 100,
-                    divisions: 5,
-                    value: _currentSliderValue,
-                    label: _currentSliderValue.round().toString(),
-                    onChanged: (value) {
-                      setState(() {
-                        _currentSliderValue:
-                        value;
-                      });
-                    },
-                  ),
+                  Row(
+                    children: [
+                      RangeSlider(
+                        min: 0.0,
+                        max: 10000000,
+                        values: values2,
+                        divisions: 100,
+                        labels: labels2,
+                        onChanged: (value) {
+                          print('START: ${value.start}, END:${value.end}');
+                          setState(() {
+                            values2 = value;
+                            labels2 = RangeLabels(
+                                value.start.toString(), value.end.toString());
+                          });
+                        },
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -66,19 +90,25 @@ class _filterState extends State<filter> {
               child: Row(
                 children: [
                   Text("Comments"),
-                  Slider(
-                    min: 0,
-                    max: 100,
-                    divisions: 5,
-                    value: _currentSliderValue,
-                    label: _currentSliderValue.round().toString(),
-                    onChanged: (value) {
-                      setState(() {
-                        _currentSliderValue:
-                        value;
-                      });
-                    },
-                  ),
+                  Row(
+                    children: [
+                      RangeSlider(
+                        min: 0.0,
+                        max: 10000000,
+                        values: values3,
+                        divisions: 100,
+                        labels: labels3,
+                        onChanged: (value) {
+                          print('START: ${value.start}, END:${value.end}');
+                          setState(() {
+                            values3 = value;
+                            labels3 = RangeLabels(
+                                value.start.toString(), value.end.toString());
+                          });
+                        },
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -87,19 +117,25 @@ class _filterState extends State<filter> {
               child: Row(
                 children: [
                   Text("Posts"),
-                  Slider(
-                    min: 0,
-                    max: 100,
-                    divisions: 5,
-                    value: _currentSliderValue,
-                    label: _currentSliderValue.round().toString(),
-                    onChanged: (value) {
-                      setState(() {
-                        _currentSliderValue:
-                        value;
-                      });
-                    },
-                  ),
+                  Row(
+                    children: [
+                      RangeSlider(
+                        min: 0.0,
+                        max: 10000000,
+                        values: values4,
+                        divisions: 100,
+                        labels: labels4,
+                        onChanged: (value) {
+                          print('START: ${value.start}, END:${value.end}');
+                          setState(() {
+                            values4 = value;
+                            labels4 = RangeLabels(
+                                value.start.toString(), value.end.toString());
+                          });
+                        },
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

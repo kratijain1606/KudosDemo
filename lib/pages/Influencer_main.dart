@@ -1,3 +1,4 @@
+import 'json.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kudos_ware/home.dart';
@@ -59,7 +60,7 @@ class _InfluencerMainState extends State<InfluencerMain> {
           ),
           backgroundColor: Color(0xFFe6e6e6),
 
-          elevation: 10,
+          elevation: 5,
           leading: IconButton(
               icon: Icon(
                 Icons.tune,
@@ -67,28 +68,16 @@ class _InfluencerMainState extends State<InfluencerMain> {
               ),
               color: Color(0x34495c),
               onPressed: () {
-                // Navigator.push(
-                //     context, MaterialPageRoute(builder: (context) => filter())
-                //     );
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Json()));
               }),
           actions: <Widget>[
-            Column(
-              children: <Widget>[
-                SizedBox(height: 20),
-                Text(
-                  "SignOut",
-                  style: (TextStyle(color: Color(0xFF34495c))),
-                ),
-              ],
-            ),
+            Column(),
             IconButton(
-                icon: Icon(Icons.keyboard_backspace, color: Color(0xFF34495c)),
+                icon: Icon(Icons.add_to_home_screen, color: Color(0xFF34495c)),
                 color: Color(0xFF34495c),
                 onPressed: () async {
-                  await _auth.signOut();
-
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                  DialogBox(context, _auth);
                 }),
           ],
           iconTheme: IconThemeData(color: Colors.blue),
@@ -116,4 +105,34 @@ class _InfluencerMainState extends State<InfluencerMain> {
           ]),
     );
   }
+}
+
+void DialogBox(BuildContext context, Auth _auth) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      // return object of type Dialog
+      return AlertDialog(
+        title: new Text("Sign Out"),
+        content: new Text("Are you sure you want to sign out?"),
+        actions: <Widget>[
+          new FlatButton(
+            child: new Text("Yes"),
+            onPressed: () async {
+              await _auth.signOut();
+
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
+              // _changeFormToLogin();
+            },
+          ),
+          new FlatButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: new Text("No"))
+        ],
+      );
+    },
+  );
 }

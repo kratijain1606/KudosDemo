@@ -20,7 +20,7 @@ class _ProfileState extends State<Profile> {
                   child: CircleAvatar(
                 backgroundColor: Colors.black,
                 child: Image.network(
-                  "",
+                  "https://robohash.org/quametnatus.jpg?size=100x100&set=set1",
                   // "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Hitman_4_artwork.jpg/220px-Hitman_4_artwork.jpg",
                   fit: BoxFit.fill,
                   cacheHeight: 100,
