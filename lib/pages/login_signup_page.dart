@@ -222,12 +222,6 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
                                 create = true;
                               })
                           },
-                          validator: (value) {
-                            if (value != _password) {
-                              return 'Password mismatch';
-                            }
-                            return null;
-                          },
                         )),
                 showPrimaryButton(),
                 _isLoginForm ? signUp() : showSecondaryButton(),
